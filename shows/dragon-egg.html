@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>The Search for the Dragon Egg — Netinima</title>
+  <link rel="stylesheet" href="../style.css" />
+  <link rel="stylesheet" href="../show.css" />
+</head>
+<body class="page-enter">
+
+<!-- LIGHTBOX -->
+<div class="lightbox" id="lightbox" onclick="closeLB(event)">
+  <div class="lb-inner">
+    <button class="lb-close" onclick="closeLB()">✕ CLOSE</button>
+    <iframe id="lb-iframe" allowfullscreen allow="autoplay; encrypted-media"></iframe>
+  </div>
+</div>
+
+<!-- NAV -->
+<nav id="nav">
+  <a class="nav-logo" href="../index.html">NET<span>INIMA</span></a>
+  <ul class="nav-links">
+    <li><a href="../index.html">Home</a></li>
+    <li><a href="#">Series</a></li>
+    <li><a href="#">Films</a></li>
+    <li><a href="#">Shorts</a></li>
+    <li><a href="#">My List</a></li>
+  </ul>
+  <div class="nav-right">
+    <input class="nav-search" type="text" placeholder="Search…" />
+    <div class="nav-avatar">🎮</div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<div class="show-hero">
+  <div class="show-hero-bg">
+    <img
+      src="https://img.youtube.com/vi/OG1c3D0N2WY/maxresdefault.jpg"
+      onerror="this.style.display='none';this.nextElementSibling.style.display='block'"
+      alt="The Search for the Dragon Egg"
+    />
+    <div class="fallback-bg t-end" style="display:none;width:100%;height:100%;position:relative">
+      <span style="position:absolute;left:30%;bottom:20px;font-size:6rem;opacity:.28">🐉</span>
+      <span style="position:absolute;right:22%;bottom:20px;font-size:5rem;opacity:.18">🥚</span>
+    </div>
+  </div>
+  <div class="show-hero-overlay"></div>
+
+  <div class="show-hero-content">
+    <a class="show-back" href="../index.html">← Back to Netinima</a>
+
+    <div class="genre-row">
+      <span class="genre-tag">Action</span>
+      <span class="genre-tag">Adventure</span>
+      <span class="genre-tag">Comedy</span>
+    </div>
+
+    <h1 class="show-title">The Search for the Dragon Egg</h1>
+
+    <div class="show-meta">
+      <span class="stars">★★★★★</span>
+      <span class="dot"></span>
+      <span>9.0/10</span>
+      <span class="dot"></span>
+      <span>2026</span>
+      <span class="dot"></span>
+      <span>Film</span>
+      <span class="dot"></span>
+      <span>4:22</span>
+      <span class="dot"></span>
+      <span>12 views</span>
+    </div>
+
+    <p class="show-desc-short">
+      DuckLeader_ goes on an adventure to look for a dragon egg — cuz y not.
+    </p>
+
+    <div class="show-btns">
+      <!-- FIX 1: changed "Play Episode 1" to "Watch Film" -->
+      <button class="btn btn-primary" onclick="playEp(0)">▶&nbsp; Watch Film</button>
+      <!-- FIX 2: no separate trailer, so this plays the film itself -->
+      <button class="btn btn-secondary" onclick="openLB('OG1c3D0N2WY')">🎬&nbsp; Watch Trailer</button>
+    </div>
+  </div>
+</div>
+
+<!-- BODY -->
+<div class="show-body">
+
+  <div class="player-section">
+    <!-- FIX 3: updated placeholder text to the real film title -->
+    <div class="player-label">Now Playing — <span id="ep-name-lbl">The Search for the Dragon Egg</span></div>
+    <div class="player-wrap" id="player-wrap">
+      <div class="player-placeholder" onclick="playEp(0)">
+        <div class="big-play">▶</div>
+        <p>Click to play &nbsp;"The Search for the Dragon Egg"</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="show-layout">
+
+    <!-- LEFT COLUMN -->
+    <div>
+
+      <!-- FIX 4: trailer section now uses the real video ID OG1c3D0N2WY -->
+      <div class="trailer-section">
+        <h3>Watch the Film</h3>
+        <div class="trailer-wrap">
+          <div class="trailer-thumb" onclick="openLB('OG1c3D0N2WY')">
+            <img
+              src="https://img.youtube.com/vi/OG1c3D0N2WY/mqdefault.jpg"
+              onerror="this.style.display='none'"
+              alt="The Search for the Dragon Egg"
+            />
+            <div class="trailer-play">▶</div>
+            <div class="trailer-badge">▶ WATCH</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- FIX 5: screenshots now use the real video ID instead of placeholders -->
+      <!-- Since it's one short film, all 4 screenshots use the same video thumbnail.
+           You can swap these for your own images later using src="../images/yourimage.jpg" -->
+      <div class="gallery-section">
+        <h3>Screenshots</h3>
+        <div class="gallery">
+
+          <div class="gallery-img">
+            <img
+              src="https://img.youtube.com/vi/OG1c3D0N2WY/mqdefault.jpg"
+              onerror="this.style.display='none'"
+              alt="Screenshot 1"
+              style="width:100%;height:100%;object-fit:cover;display:block"
+            />
+            <div class="gallery-img-lbl">DuckLeader_ begins the quest</div>
+          </div>
+
+          <div class="gallery-img">
+            <img
+              src="https://img.youtube.com/vi/OG1c3D0N2WY/hqdefault.jpg"
+              onerror="this.style.display='none'"
+              alt="Screenshot 2"
+              style="width:100%;height:100%;object-fit:cover;display:block"
+            />
+            <div class="gallery-img-lbl">The search is on</div>
+          </div>
+
+        </div>
+      </div>
+
+      <div class="about-section">
+        <h3>About This Film</h3>
+        <div class="about-text">
+          <p>
+            This is just a terrible machinima that the creator made in 1 day.
+          </p>
+          <p>
+            His friend made the music.
+          </p>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- RIGHT SIDEBAR -->
+    <div>
+
+      <div class="ep-section">
+        <h3>Film</h3>
+        <div class="ep-list" id="ep-list">
+
+          <div class="ep-item ep-active" id="epi-0" onclick="playEp(0)">
+            <span class="ep-num">Film</span>
+            <div class="ep-info">
+              <div class="ep-name">The Search for the Dragon Egg</div>
+              <div class="ep-dur">04:22</div>
+            </div>
+            <div class="ep-play">▶</div>
+          </div>
+
+        </div>
+      </div>
+
+      <div class="sidebar-lbl">Film Info</div>
+      <table class="info-table">
+        <tr><td>Creator</td>  <td>DuckLeader_</td></tr>
+        <tr><td>Year</td>     <td>2026</td></tr>
+        <tr><td>Type</td>     <td>Film</td></tr>
+        <tr><td>Runtime</td>  <td>4:22</td></tr>
+        <tr><td>Rating</td>   <td><span style="color:var(--gold)">★★★★★</span> 9.0/10</td></tr>
+        <tr><td>Views</td>    <td><span style="color:var(--green)">12 views</span></td></tr>
+      </table>
+
+      <!-- FIX 6: removed unfilled related shows placeholder links -->
+      <!-- Add these back once you have other shows on the site to link to -->
+      <div class="sidebar-lbl">More Like This</div>
+      <div style="display:flex;flex-direction:column;gap:9px">
+        <p style="font-size:.8rem;color:var(--muted);font-weight:600">More shows coming soon.</p>
+      </div>
+
+    </div>
+
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div>
+    <div class="footer-logo">NET<span>INIMA</span></div>
+    <p class="footer-tagline">The premier destination for Minecraft machinima. Stories built block by block, frame by frame.</p>
+  </div>
+  <div class="footer-col">
+    <h4>Browse</h4>
+    <a href="../index.html">Home</a>
+    <a href="#">All Series</a>
+    <a href="#">Top Rated</a>
+  </div>
+  <div class="footer-col">
+    <h4>Community</h4>
+    <a href="#">Submit Your Machinima</a>
+    <a href="#">Discord Server</a>
+    <a href="#">Awards</a>
+  </div>
+  <div class="footer-bottom">
+    <p>© 2026 Netinima · Not affiliated with Mojang or Microsoft</p>
+    <p>Built in the Overworld ⛏</p>
+  </div>
+</footer>
+
+<script>
+// FIX 7: replaced EPISODE_1_VIDEO_ID with the real YouTube ID
+const EPISODES = [
+  { n: 1, title: 'The Search for the Dragon Egg', dur: '04:22', yt: 'OG1c3D0N2WY' },
+];
+
+function playEp(idx) {
+  const ep = EPISODES[idx]; if (!ep) return;
+  document.getElementById('player-wrap').innerHTML =
+    `<iframe src="https://www.youtube.com/embed/${ep.yt}?autoplay=1&rel=0"
+      allowfullscreen allow="autoplay; encrypted-media"></iframe>`;
+  document.getElementById('ep-name-lbl').textContent = ep.title;
+  document.querySelectorAll('.ep-item').forEach((el, i) => el.classList.toggle('ep-active', i === idx));
+  document.getElementById('player-wrap').scrollIntoView({ behavior: 'smooth', block: 'center' });
+}
+
+function openLB(ytId) {
+  document.getElementById('lb-iframe').src = `https://www.youtube.com/embed/${ytId}?autoplay=1&rel=0`;
+  document.getElementById('lightbox').classList.add('lb-open');
+}
+function closeLB(e) {
+  if (e && e.target !== e.currentTarget) return;
+  document.getElementById('lightbox').classList.remove('lb-open');
+  document.getElementById('lb-iframe').src = '';
+}
+window.addEventListener('scroll', () => {
+  document.getElementById('nav').classList.toggle('scrolled', window.scrollY > 40);
+});
+</script>
+
+</body>
+</html>
