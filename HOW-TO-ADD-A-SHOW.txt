@@ -1,0 +1,121 @@
+# HOW TO ADD A NEW SHOW TO NETINIMA
+========================================
+
+## STEP-BY-STEP
+
+### 1. Duplicate the template
+Copy `shows/TEMPLATE.html` and rename it to your show.
+Use lowercase with hyphens, no spaces.
+Examples:
+  shows/dragon-wars.html
+  shows/steve-chronicles.html
+  shows/the-last-village.html
+
+---
+
+### 2. Find your YouTube video IDs
+A YouTube video ID is the part after `?v=` in any YouTube URL.
+
+  youtube.com/watch?v=dQw4w9WgXcQ
+                      ↑ this part is the ID: dQw4w9WgXcQ
+
+You'll need IDs for:
+  - HERO_VIDEO_ID      → used as the big banner background image
+  - TRAILER_VIDEO_ID   → used for the trailer thumbnail + embed
+  - Each episode       → EPISODE_1_VIDEO_ID, EPISODE_2_VIDEO_ID, etc.
+  - Screenshots        → SCREENSHOT_VIDEO_ID_1 through _4
+  - Related shows      → RELATED_VIDEO_ID_1 through _3
+
+---
+
+### 3. Fill in the template (search for these placeholders)
+
+  YOUR SHOW TITLE HERE       → The name of your show/movie
+  HERO_VIDEO_ID              → YouTube ID for hero banner image
+  TRAILER_VIDEO_ID           → YouTube ID for your trailer
+  EPISODE_1_VIDEO_ID         → YouTube ID for episode 1
+  EPISODE_2_VIDEO_ID         → YouTube ID for episode 2
+  SCREENSHOT_VIDEO_ID_1–4    → YouTube IDs for screenshots
+  RELATED_SHOW_1.html        → Filename of a related show
+  RELATED_VIDEO_ID_1–3       → YouTube IDs for related show thumbnails
+
+---
+
+### 4. Choose a fallback theme
+In the hero section, find `class="fallback-bg t-night"` and swap
+`t-night` for one of these based on your show's setting:
+
+  t-night   = dark overworld night sky
+  t-cave    = underground cave
+  t-nether  = red/orange Nether
+  t-end     = dark purple End dimension
+  t-ocean   = deep ocean blue
+  t-village = sunny village / overworld day
+  t-desert  = sandy desert
+  t-snow    = icy tundra
+
+---
+
+### 5. Add your show to the homepage (index.html)
+Open `index.html` and find the `const SHOWS = [` array.
+Add a new entry following this format:
+
+  {
+    id: 'your-show-id',            // same as your filename without .html
+    title: 'Your Show Title',
+    seasons: '1 Season',           // or '2 Seasons', 'Film', etc.
+    views: '500K views',
+    stars: '★★★★★',
+    badge: 'NEW',                  // 'NEW', 'HOT', or '' for none
+    genres: ['Adventure','Drama'],
+    thumbYt: 'YOUR_VIDEO_ID',      // YouTube ID for card thumbnail
+    url: 'shows/your-show.html',   // path to your show file
+    featured: false,               // set true to show in Editor's Picks
+    featuredDesc: '',              // short desc if featured: true
+  },
+
+Then add its id to the row arrays underneath:
+  - SHOWS array index in row-trending, row-new, etc.
+
+---
+
+### 6. Save and push to GitHub
+That's it. Your new show will be live at:
+  yourusername.github.io/your-repo/shows/your-show.html
+
+---
+
+## FILM vs SERIES
+
+For a FILM (single video, no episodes):
+  - Set `seasons: 'Film'` and `episodes: '1 Film'`
+  - In the EPISODES array, just have one entry
+  - Change the button text to "▶ Watch Now" instead of "Play Episode 1"
+  - Remove episode 2, 3, etc. from the ep-list section
+
+---
+
+## THUMBNAIL QUALITY OPTIONS
+
+YouTube thumbnails come in different sizes. Use whichever loads best:
+
+  mqdefault.jpg   → 320×180  (always available, used for cards/screenshots)
+  hqdefault.jpg   → 480×360  (usually available)
+  sddefault.jpg   → 640×480
+  maxresdefault.jpg → 1280×720 (only on some videos, used for hero banner)
+
+If maxresdefault.jpg shows a black image, switch to hqdefault.jpg.
+
+---
+
+## FILE STRUCTURE REMINDER
+
+  netinima/
+  ├── index.html          ← Homepage (edit to add new show cards)
+  ├── style.css           ← Shared styles — do not edit
+  ├── show.css            ← Show page styles — do not edit
+  └── shows/
+      ├── TEMPLATE.html   ← Your starting point for every new show
+      ├── creeper.html
+      ├── herobrine.html
+      └── your-new-show.html  ← Goes here

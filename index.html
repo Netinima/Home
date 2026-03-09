@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Netinima – Minecraft Machinimas</title>
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    /* HERO */
+    .hero {
+      position: relative; height: 92vh; min-height: 540px;
+      display: flex; align-items: flex-end; padding: 0 6vw 80px; overflow: hidden;
+    }
+    .hero-bg-img { position: absolute; inset: 0; z-index: 0; }
+    .hero-bg-img img { width: 100%; height: 100%; object-fit: cover; display: block; opacity: .55; }
+    .hero-fallback { position: absolute; inset: 0; background: #0d1520; z-index: 0; display: none; }
+    .hero-fallback::before {
+      content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 48%;
+      background: linear-gradient(to bottom, #3a6930 0, #3a6930 24px, #5a3a1a 24px, #5a3a1a 120px, #2a2a2a 120px);
+      clip-path: polygon(0% 18%,4% 13%,8% 17%,12% 9%,16% 14%,21% 7%,25% 12%,30% 5%,34% 10%,38% 4%,43% 9%,47% 3%,51% 8%,55% 1%,59% 7%,63% 2%,67% 8%,71% 4%,75% 10%,80% 5%,84% 12%,88% 7%,92% 13%,96% 8%,100% 16%,100% 100%,0% 100%);
+    }
+    .hero-overlay {
+      position: absolute; inset: 0; z-index: 1;
+      background: linear-gradient(to right, rgba(0,0,0,.88) 38%, transparent 72%),
+                  linear-gradient(to top, rgba(0,0,0,.92) 0%, transparent 38%);
+    }
+    .hero-content { position: relative; z-index: 2; max-width: 560px; }
+    .hero-badge {
+      display: inline-flex; align-items: center; gap: 7px;
+      font-family: var(--fm); font-size: .65rem; color: var(--green);
+      border: 1px solid var(--green-dim); padding: 4px 11px;
+      border-radius: 2px; margin-bottom: 16px; letter-spacing: 2px; text-transform: uppercase;
+    }
+    .hero-badge::before { content: '▶'; font-size: .5rem; }
+    .hero-title {
+      font-family: var(--fh); font-size: clamp(3rem, 6.5vw, 5.5rem);
+      line-height: .93; letter-spacing: 2px; color: #fff;
+      text-shadow: 4px 4px 0 rgba(0,0,0,.6); margin-bottom: 14px;
+    }
+    .hero-meta {
+      display: flex; align-items: center; gap: 10px; font-size: .82rem;
+      color: var(--muted); margin-bottom: 12px; font-weight: 600;
+      letter-spacing: 1px; flex-wrap: wrap;
+    }
+    .hero-meta .hrating { color: var(--gold); }
+    .hero-meta .hdot { width: 3px; height: 3px; background: var(--muted); border-radius: 50%; }
+    .hero-meta .htag { border: 1px solid var(--border); padding: 2px 7px; border-radius: 2px; font-size: .65rem; text-transform: uppercase; }
+    .hero-desc { font-size: .92rem; color: #bbb; line-height: 1.65; margin-bottom: 26px; max-width: 400px; font-weight: 500; }
+    .hero-btns { display: flex; gap: 12px; flex-wrap: wrap; }
+
+    /* EMPTY WELCOME STATE */
+    .empty-hero {
+      position: relative; height: 60vh; min-height: 400px;
+      display: flex; align-items: center; justify-content: center; overflow: hidden;
+    }
+    .empty-bg { position: absolute; inset: 0; background: #0d1520; }
+    .empty-bg::before {
+      content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 48%;
+      background: linear-gradient(to bottom, #3a6930 0, #3a6930 24px, #5a3a1a 24px, #5a3a1a 120px, #2a2a2a 120px);
+      clip-path: polygon(0% 18%,4% 13%,8% 17%,12% 9%,16% 14%,21% 7%,25% 12%,30% 5%,34% 10%,38% 4%,43% 9%,47% 3%,51% 8%,55% 1%,59% 7%,63% 2%,67% 8%,71% 4%,75% 10%,80% 5%,84% 12%,88% 7%,92% 13%,96% 8%,100% 16%,100% 100%,0% 100%);
+    }
+    .empty-bg-overlay { position: absolute; inset: 0; background: linear-gradient(to top, rgba(0,0,0,.8) 0%, transparent 60%); }
+    .empty-content { position: relative; z-index: 2; text-align: center; padding: 0 4vw; }
+    .empty-logo { font-family: var(--fh); font-size: clamp(3.5rem, 9vw, 7rem); letter-spacing: 6px; color: var(--green); text-shadow: 0 0 40px rgba(74,222,128,.3); margin-bottom: 14px; }
+    .empty-logo span { color: var(--gold); }
+    .empty-sub { font-size: .85rem; color: var(--muted); font-weight: 600; letter-spacing: 3px; text-transform: uppercase; font-family: var(--fm); }
+
+    /* CATEGORIES */
+    .categories { display: flex; gap: 9px; flex-wrap: wrap; padding: 0 4vw; margin-bottom: 36px; }
+    .cat-pill {
+      padding: 7px 16px; background: var(--card); border: 1px solid var(--border);
+      border-radius: 3px; color: var(--muted); font-size: .74rem; font-weight: 700;
+      letter-spacing: 1px; text-transform: uppercase; cursor: pointer;
+      transition: all .2s; font-family: var(--fb);
+    }
+    .cat-pill:hover, .cat-pill.active { background: var(--green); color: #000; border-color: var(--green); }
+
+    /* SECTIONS */
+    .section { padding: 0 4vw 44px; }
+    .section-header { display: flex; align-items: baseline; gap: 12px; margin-bottom: 16px; }
+    .section-title { font-family: var(--fh); font-size: 1.3rem; letter-spacing: 2px; }
+    .section-tag { font-family: var(--fm); font-size: .62rem; color: var(--green); border: 1px solid var(--green-dim); padding: 2px 7px; letter-spacing: 2px; text-transform: uppercase; }
+
+    /* CARD ROW (horizontal scroll) */
+    .card-row { display: flex; gap: 13px; overflow-x: auto; padding-bottom: 10px; }
+    .card-row::-webkit-scrollbar { height: 3px; }
+    .card-row::-webkit-scrollbar-thumb { background: var(--green-dim); }
+
+    /* CARDS */
+    .card {
+      flex: 0 0 195px; border-radius: 4px; overflow: hidden;
+      cursor: pointer; text-decoration: none; display: block;
+      border: 1px solid transparent;
+      transition: transform .25s, border-color .25s, box-shadow .25s;
+      position: relative; background: var(--card);
+    }
+    .card:hover {
+      transform: scale(1.06) translateY(-4px);
+      border-color: var(--green-dim);
+      box-shadow: 0 12px 40px rgba(0,0,0,.6), 0 0 20px rgba(74,222,128,.13);
+      z-index: 2;
+    }
+    .card-thumb { width: 100%; aspect-ratio: 16/9; position: relative; overflow: hidden; background: var(--surface); }
+    .card-thumb img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform .3s; }
+    .card:hover .card-thumb img { transform: scale(1.06); }
+    .play-overlay { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; background: rgba(0,0,0,.45); opacity: 0; transition: opacity .2s; }
+    .card:hover .play-overlay { opacity: 1; }
+    .play-circle { width: 38px; height: 38px; border-radius: 50%; background: rgba(74,222,128,.92); display: flex; align-items: center; justify-content: center; font-size: .9rem; color: #000; }
+    .card-info { padding: 9px 11px 11px; }
+    .card-title { font-size: .85rem; font-weight: 700; color: var(--text); margin-bottom: 4px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+    .card-sub { display: flex; gap: 7px; align-items: center; font-size: .7rem; color: var(--muted); font-weight: 500; }
+    .card-sub .cviews { color: var(--green-dim); }
+    .card-rating { color: var(--gold); font-size: .7rem; }
+    .card-badge { position: absolute; top: 7px; left: 7px; font-size: .58rem; font-weight: 700; padding: 2px 6px; border-radius: 2px; letter-spacing: 1px; text-transform: uppercase; font-family: var(--fm); }
+    .badge-new { background: var(--red); color: #fff; }
+    .badge-hot { background: var(--gold); color: #000; }
+
+    /* ALL SHOWS GRID */
+    .shows-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(195px, 1fr)); gap: 14px; }
+
+    /* STATS BAR */
+    .stats-bar { display: flex; gap: 32px; padding: 18px 4vw 18px; margin-bottom: 4px; border-bottom: 1px solid var(--border); }
+    .stat-num { font-family: var(--fh); font-size: 1.8rem; color: var(--green); letter-spacing: 2px; }
+    .stat-lbl { font-family: var(--fm); font-size: .58rem; color: var(--muted); letter-spacing: 2px; text-transform: uppercase; margin-top: 2px; }
+
+    /* NO SHOWS */
+    .no-shows { padding: 48px; text-align: center; border: 1px dashed var(--border); border-radius: 6px; }
+    .no-shows p { font-family: var(--fm); font-size: .72rem; letter-spacing: 1.5px; text-transform: uppercase; line-height: 2.2; color: var(--muted); }
+    .no-shows a { color: var(--green); text-decoration: none; }
+    .no-shows a:hover { text-decoration: underline; }
+
+    /* FOOTER */
+    footer { border-top: 1px solid var(--border); padding: 36px 5vw 24px; display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 28px; }
+    .footer-logo { font-family: var(--fh); font-size: 1.7rem; color: var(--green); letter-spacing: 3px; margin-bottom: 8px; }
+    .footer-logo span { color: var(--gold); }
+    .footer-tagline { font-size: .78rem; color: var(--muted); line-height: 1.7; }
+    .footer-col h4 { font-family: var(--fm); font-size: .62rem; color: var(--muted); letter-spacing: 3px; text-transform: uppercase; margin-bottom: 12px; }
+    .footer-col a { display: block; color: #999; text-decoration: none; font-size: .82rem; margin-bottom: 7px; font-weight: 500; transition: color .2s; }
+    .footer-col a:hover { color: var(--green); }
+    .footer-bottom { grid-column: 1/-1; border-top: 1px solid var(--border); padding-top: 18px; margin-top: 8px; display: flex; justify-content: space-between; align-items: center; }
+    .footer-bottom p { font-size: .7rem; color: #444; font-family: var(--fm); }
+  </style>
+</head>
+<body class="page-enter">
+
+<nav id="nav">
+  <a class="nav-logo" href="index.html">NET<span>INIMA</span></a>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="#all-shows">All Shows</a></li>
+    <li><a href="#films">Films</a></li>
+    <li><a href="#series">Series</a></li>
+  </ul>
+  <div class="nav-right">
+    <input class="nav-search" id="search-input" type="text" placeholder="Search…" oninput="filterShows(this.value)" />
+    <div class="nav-avatar">🎮</div>
+  </div>
+</nav>
+
+<!-- All dynamic content injected here by JS -->
+<div id="hero-mount"></div>
+<div class="ticker-wrap" id="ticker-wrap" style="display:none"><div class="ticker" id="ticker-inner"></div></div>
+<div class="categories" id="cat-bar" style="display:none"><button class="cat-pill active" onclick="filterGenre('All',this)">All</button></div>
+<div class="stats-bar" id="stats-bar" style="display:none"></div>
+<section class="section" id="section-new" style="display:none">
+  <div class="section-header"><h2 class="section-title">New Releases</h2><span class="section-tag">Recently Added</span></div>
+  <div class="card-row" id="row-new"></div>
+</section>
+<section class="section" id="all-shows">
+  <div class="section-header"><h2 class="section-title" id="grid-title">All Shows</h2></div>
+  <div id="grid-wrap"></div>
+</section>
+
+<footer>
+  <div>
+    <div class="footer-logo">NET<span>INIMA</span></div>
+    <p class="footer-tagline">The premier destination for Minecraft machinima. Stories built block by block, frame by frame.</p>
+  </div>
+  <div class="footer-col">
+    <h4>Browse</h4>
+    <a href="#all-shows">All Shows</a><a href="#films">Films</a><a href="#series">Series</a>
+  </div>
+  <div class="footer-col">
+    <h4>Community</h4>
+    <a href="#">Submit Your Machinima</a><a href="#">Discord Server</a><a href="#">Awards</a>
+  </div>
+  <div class="footer-bottom">
+    <p id="footer-copy">© 2026 Netinima · Not affiliated with Mojang or Microsoft</p>
+    <p>Built in the Overworld ⛏</p>
+  </div>
+</footer>
+
+<script src="shows.js"></script>
+<script>
+// ── BUILD CARD ──
+function buildCard(s) {
+  const a = document.createElement('a');
+  a.className = 'card';
+  a.href = s.file;
+  a.innerHTML = `
+    <div class="card-thumb">
+      <img src="https://img.youtube.com/vi/${s.thumbYt}/mqdefault.jpg" alt="${s.title}" onerror="this.style.opacity=0" />
+      <div class="play-overlay"><div class="play-circle">▶</div></div>
+      ${s.badge ? `<div class="card-badge ${s.badge==='NEW'?'badge-new':'badge-hot'}">${s.badge}</div>` : ''}
+    </div>
+    <div class="card-info">
+      <div class="card-title">${s.title}</div>
+      <div class="card-sub"><span class="cviews">${s.seasons}</span><span>·</span><span>${s.views}</span></div>
+      <div class="card-rating">${s.stars}</div>
+    </div>`;
+  return a;
+}
+
+// ── BUILD HERO ──
+function buildHero(shows) {
+  const mount = document.getElementById('hero-mount');
+  const show = shows.find(s => s.featured) || shows[0] || null;
+
+  if (!show) {
+    mount.innerHTML = `
+      <div class="empty-hero">
+        <div class="empty-bg"></div>
+        <div class="empty-bg-overlay"></div>
+        <div class="empty-content">
+          <div class="empty-logo">NET<span>INIMA</span></div>
+          <p class="empty-sub">Add your first show to get started</p>
+        </div>
+      </div>`;
+    return;
+  }
+
+  const genres = show.genres.map(g => `<span class="htag">${g}</span>`).join('');
+  mount.innerHTML = `
+    <section class="hero">
+      <div class="hero-bg-img">
+        <img src="https://img.youtube.com/vi/${show.thumbYt}/maxresdefault.jpg" alt="${show.title}"
+          onerror="this.parentElement.style.display='none';document.querySelector('.hero-fallback').style.display='block'" />
+      </div>
+      <div class="hero-fallback"></div>
+      <div class="hero-overlay"></div>
+      <div class="hero-content">
+        <div class="hero-badge">Now Streaming</div>
+        <h1 class="hero-title">${show.title}</h1>
+        <div class="hero-meta">
+          <span class="hrating">${show.stars}</span>
+          <span class="hdot"></span><span>${show.year}</span>
+          <span class="hdot"></span><span>${show.seasons}</span>
+          <span class="hdot"></span>${genres}
+        </div>
+        <p class="hero-desc">${show.heroDesc}</p>
+        <div class="hero-btns">
+          <a class="btn btn-primary" href="${show.file}">▶&nbsp; ${show.type==='Film'?'Watch Now':'Play Now'}</a>
+          <a class="btn btn-secondary" href="${show.file}">ℹ More Info</a>
+        </div>
+      </div>
+    </section>`;
+}
+
+// ── BUILD TICKER ──
+function buildTicker(shows) {
+  if (!shows.length) return;
+  const wrap = document.getElementById('ticker-wrap');
+  const inner = document.getElementById('ticker-inner');
+  wrap.style.display = 'block';
+  const items = shows.map(s => `<span class="ticker-item"><span>${s.badge||'★'}</span>${s.title.toUpperCase()} · ${s.year} · ${s.views.toUpperCase()}</span>`);
+  inner.innerHTML = [...items, ...items].join(''); // duplicate for seamless loop
+}
+
+// ── BUILD CATEGORY PILLS ──
+function buildCategories(shows) {
+  if (!shows.length) return;
+  const bar = document.getElementById('cat-bar');
+  bar.style.display = 'flex';
+  const genres = new Set(shows.flatMap(s => s.genres));
+  genres.forEach(g => {
+    const btn = document.createElement('button');
+    btn.className = 'cat-pill';
+    btn.textContent = g;
+    btn.onclick = () => filterGenre(g, btn);
+    bar.appendChild(btn);
+  });
+}
+
+// ── BUILD STATS BAR ──
+function buildStats(shows) {
+  if (shows.length < 2) return;
+  const bar = document.getElementById('stats-bar');
+  bar.style.display = 'flex';
+  const films = shows.filter(s => s.type === 'Film' || s.type === 'Short').length;
+  const series = shows.filter(s => s.type === 'Series').length;
+  bar.innerHTML = [
+    [shows.length, 'Total'],
+    [films, 'Films'],
+    [series, 'Series'],
+  ].map(([n,l]) => `<div><div class="stat-num">${n}</div><div class="stat-lbl">${l}</div></div>`).join('');
+}
+
+// ── BUILD NEW ROW ──
+function buildNewRow(shows) {
+  if (shows.length < 2) return;
+  document.getElementById('section-new').style.display = 'block';
+  const row = document.getElementById('row-new');
+  [...shows].sort((a,b) => parseInt(b.year)-parseInt(a.year)).slice(0,6)
+    .forEach(s => row.appendChild(buildCard(s)));
+}
+
+// ── BUILD GRID ──
+function buildGrid(shows) {
+  const wrap = document.getElementById('grid-wrap');
+  const title = document.getElementById('grid-title');
+  wrap.innerHTML = '';
+  title.textContent = `All Shows${shows.length > 1 ? ` (${shows.length})` : ''}`;
+
+  if (!shows.length) {
+    wrap.innerHTML = `<div class="no-shows">
+      <p>No shows here yet.</p>
+      <p>Duplicate <a href="shows/TEMPLATE.html">TEMPLATE.html</a>, fill it in,<br>then add it to <strong>shows.js</strong> to appear here.</p>
+    </div>`;
+    return;
+  }
+  const grid = document.createElement('div');
+  grid.className = 'shows-grid';
+  shows.forEach(s => grid.appendChild(buildCard(s)));
+  wrap.appendChild(grid);
+}
+
+// ── FILTER BY GENRE ──
+function filterGenre(genre, btn) {
+  document.querySelectorAll('.cat-pill').forEach(p => p.classList.remove('active'));
+  btn.classList.add('active');
+  buildGrid(genre === 'All' ? SHOW_REGISTRY : SHOW_REGISTRY.filter(s => s.genres.includes(genre)));
+}
+
+// ── SEARCH ──
+function filterShows(q) {
+  q = q.toLowerCase().trim();
+  buildGrid(!q ? SHOW_REGISTRY : SHOW_REGISTRY.filter(s =>
+    s.title.toLowerCase().includes(q) ||
+    s.genres.some(g => g.toLowerCase().includes(q)) ||
+    s.type.toLowerCase().includes(q) ||
+    s.year.includes(q)
+  ));
+}
+
+// ── INIT ──
+(function init() {
+  const shows = SHOW_REGISTRY;
+  buildHero(shows);
+  buildTicker(shows);
+  buildCategories(shows);
+  buildStats(shows);
+  buildNewRow(shows);
+  buildGrid(shows);
+  const yr = shows.length ? Math.max(...shows.map(s => parseInt(s.year)||2024)) : new Date().getFullYear();
+  document.getElementById('footer-copy').textContent = `© ${yr} Netinima · Not affiliated with Mojang or Microsoft`;
+})();
+
+window.addEventListener('scroll', () => {
+  document.getElementById('nav').classList.toggle('scrolled', window.scrollY > 40);
+});
+</script>
+</body>
+</html>
