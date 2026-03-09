@@ -28,7 +28,7 @@ const SHOW_REGISTRY = [
     genres:   ['Action', 'Thriller', 'Roleplay'],
     thumbYt:  'jEGOMYHFFMw',
     heroDesc: 'A Minecraft cinematic school roleplay where Grandpa goes on adventures through his ranch and fellow classmates — until Ghost Rider shows up.',
-    featured: true,
+    featured: false,
   },
 
   {
@@ -48,6 +48,25 @@ const SHOW_REGISTRY = [
     thumbYt:  'OG1c3D0N2WY',
     heroDesc: 'DuckLeader_ goes on an adventure to look for a dragon egg — cuz y not.',
     featured: false,
+  },
+
+  {
+    id:       'Class-25',
+    file:     'shows/Class-25.html',
+    title:    'Class of 25',
+    year:     '2025-6',
+    type:     'Show',
+    seasons:  '1',
+    episodes: '7',
+    runtime:  '12 minute average',
+    views:    'good views',
+    stars:    '★★★★★',
+    rating:   '9.0',
+    badge:    '',
+    genres:   ['Roleplay','Comedy'],
+    thumbYt:  'OG1c3D0N2WY',
+    heroDesc: 'An absolutely unhinged high school story where crazy stuff happens for no reson at all',
+    featured: true,
   },
 
   // ── ADD YOUR NEXT SHOW BELOW THIS LINE ──
