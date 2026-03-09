@@ -8,27 +8,28 @@
 //  TO REMOVE A SHOW: Delete its object from the array.
 //  TO FEATURE A SHOW ON THE HERO: Set  featured: true
 //    (only the first show with featured:true becomes the hero)
-//
-//  FIELDS:
-//    id          unique slug, matches your filename (no .html)
-//    file        path to the show page from the root
-//    title       full show title
-//    year        release year
-//    type        "Series" | "Film" | "Short"
-//    seasons     e.g. "2 Seasons" | "Film" | "Short"
-//    episodes    e.g. "12 Episodes" | "1 Film" | "4:22"
-//    runtime     e.g. "22 min avg" | "4:22"
-//    views       e.g. "12 views" | "1.5M views"
-//    stars       star string e.g. "★★★★★"
-//    rating      numeric string e.g. "9.4"
-//    badge       "NEW" | "HOT" | ""   (empty = no badge)
-//    genres      array of genre strings
-//    thumbYt     YouTube video ID — used as the card thumbnail
-//    heroDesc    1-2 sentence hook shown on the hero banner
-//    featured    true | false — first true entry becomes the hero
 // ============================================================
 
 const SHOW_REGISTRY = [
+
+  {
+    id:       'ghost-rider',
+    file:     'shows/ghost-rider.html',
+    title:    'GHOST RIDER Appears?!',
+    year:     '2026',
+    type:     'Film',
+    seasons:  'Film',
+    episodes: 'Short Film',
+    runtime:  'Short',
+    views:    '',
+    stars:    '★★★★★',
+    rating:   '9.0',
+    badge:    'NEW',
+    genres:   ['Action', 'Thriller', 'Roleplay'],
+    thumbYt:  'jEGOMYHFFMw',
+    heroDesc: 'A Minecraft cinematic school roleplay where Grandpa goes on adventures through his ranch and fellow classmates — until Ghost Rider shows up.',
+    featured: true,
+  },
 
   {
     id:       'dragon-egg',
@@ -42,11 +43,11 @@ const SHOW_REGISTRY = [
     views:    '12 views',
     stars:    '★★★★★',
     rating:   '9.0',
-    badge:    'NEW',
+    badge:    '',
     genres:   ['Action', 'Adventure', 'Comedy'],
     thumbYt:  'OG1c3D0N2WY',
     heroDesc: 'DuckLeader_ goes on an adventure to look for a dragon egg — cuz y not.',
-    featured: true,
+    featured: false,
   },
 
   // ── ADD YOUR NEXT SHOW BELOW THIS LINE ──

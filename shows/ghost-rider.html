@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>GHOST RIDER Appears?! — Netinima</title>
+  <link rel="stylesheet" href="../style.css" />
+  <link rel="stylesheet" href="../show.css" />
+</head>
+<body class="page-enter">
+
+<!-- LIGHTBOX -->
+<div class="lightbox" id="lightbox" onclick="closeLB(event)">
+  <div class="lb-inner">
+    <button class="lb-close" onclick="closeLB()">✕ CLOSE</button>
+    <iframe id="lb-iframe" allowfullscreen allow="autoplay; encrypted-media"></iframe>
+  </div>
+</div>
+
+<!-- NAV -->
+<nav id="nav">
+  <a class="nav-logo" href="../index.html">NET<span>INIMA</span></a>
+  <ul class="nav-links">
+    <li><a href="../index.html">Home</a></li>
+    <li><a href="#">Series</a></li>
+    <li><a href="#">Films</a></li>
+    <li><a href="#">Shorts</a></li>
+    <li><a href="#">My List</a></li>
+  </ul>
+  <div class="nav-right">
+    <input class="nav-search" type="text" placeholder="Search…" />
+    <div class="nav-avatar">🎮</div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<div class="show-hero">
+  <div class="show-hero-bg">
+    <img
+      src="https://img.youtube.com/vi/jEGOMYHFFMw/maxresdefault.jpg"
+      onerror="this.style.display='none';this.nextElementSibling.style.display='block'"
+      alt="GHOST RIDER Appears?!"
+    />
+    <div class="fallback-bg t-night" style="display:none;width:100%;height:100%;position:relative">
+      <span style="position:absolute;left:30%;bottom:20px;font-size:6rem;opacity:.28">🔥</span>
+      <span style="position:absolute;right:22%;bottom:20px;font-size:5rem;opacity:.18">💀</span>
+    </div>
+  </div>
+  <div class="show-hero-overlay"></div>
+
+  <div class="show-hero-content">
+    <a class="show-back" href="../index.html">← Back to Netinima</a>
+
+    <div class="genre-row">
+      <span class="genre-tag">Action</span>
+      <span class="genre-tag">Comedy</span>
+      <span class="genra-tag">Thriller</span>
+    </div>
+
+    <h1 class="show-title">GHOST RIDER<br>Appears?!</h1>
+
+    <div class="show-meta">
+      <span class="stars">★★★★★</span>
+      <span class="dot"></span>
+      <span>2024</span>
+      <span class="dot"></span>
+      <span>Film</span>
+      <span class="dot"></span>
+      <span>Chapter Plus</span>
+    </div>
+
+    <p class="show-desc-short">
+      A Minecraft cinematic school roleplay where all the Grandpa goes on adventures through his ranch and fellow classmates.
+    </p>
+
+    <div class="show-btns">
+      <button class="btn btn-primary" onclick="playEp(0)">▶&nbsp; Watch Now</button>
+    </div>
+  </div>
+</div>
+
+<!-- BODY -->
+<div class="show-body">
+
+  <!-- PLAYER -->
+  <div class="player-section">
+    <div class="player-label">Now Playing — <span id="ep-name-lbl">GHOST RIDER Appears?!</span></div>
+    <div class="player-wrap" id="player-wrap">
+      <div class="player-placeholder" onclick="playEp(0)">
+        <div class="big-play">▶</div>
+        <p>Click to watch &nbsp;"GHOST RIDER Appears?!"</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="show-layout">
+
+    <!-- LEFT COLUMN -->
+    <div>
+
+      <!-- SCREENSHOTS — all pulled from the same video at different quality levels
+           giving slightly different crops. Swap for your own images any time. -->
+      <div class="gallery-section">
+        <h3>Screenshots</h3>
+        <div class="gallery">
+
+          <div class="gallery-img">
+            <img
+              src="https://img.youtube.com/vi/jEGOMYHFFMw/maxresdefault.jpg"
+              onerror="this.style.display='none'"
+              alt="Ghost Rider arrives"
+              style="width:100%;height:100%;object-fit:cover;display:block"
+            />
+            <div class="gallery-img-lbl">The Ghost Rider arrives</div>
+          </div>
+
+          <div class="gallery-img">
+            <img
+              src="https://img.youtube.com/vi/jEGOMYHFFMw/hqdefault.jpg"
+              onerror="this.style.display='none'"
+              alt="Grandpa on the ranch"
+              style="width:100%;height:100%;object-fit:cover;display:block"
+            />
+            <div class="gallery-img-lbl">Grandpa on the ranch</div>
+          </div>
+
+          <div class="gallery-img">
+            <img
+              src="https://img.youtube.com/vi/jEGOMYHFFMw/mqdefault.jpg"
+              onerror="this.style.display='none'"
+              alt="School roleplay chaos"
+              style="width:100%;height:100%;object-fit:cover;display:block"
+            />
+            <div class="gallery-img-lbl">School roleplay chaos</div>
+          </div>
+
+          <div class="gallery-img">
+            <img
+              src="https://img.youtube.com/vi/jEGOMYHFFMw/sddefault.jpg"
+              onerror="this.style.display='none'"
+              alt="Classmates react"
+              style="width:100%;height:100%;object-fit:cover;display:block"
+            />
+            <div class="gallery-img-lbl">Classmates react</div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- ABOUT -->
+      <div class="about-section">
+        <h3>About This Film</h3>
+        <div class="about-text">
+          <p>
+            A Minecraft cinematic school roleplay where Grandpa goes on wild adventures through his ranch and fellow classmates. When the legendary Ghost Rider unexpectedly appears, nothing at school will ever be the same again.
+          </p>
+          <p>
+            Created by Chapter Plus, this short film blends Minecraft's blocky world with cinematic storytelling, delivering laughs, chaos, and a whole lot of unexpected drama — all set against the backdrop of the most eventful school day ever.
+          </p>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- RIGHT SIDEBAR -->
+    <div>
+
+      <!-- FILM ENTRY -->
+      <div class="ep-section">
+        <h3>Film</h3>
+        <div class="ep-list" id="ep-list">
+          <div class="ep-item ep-active" id="epi-0" onclick="playEp(0)">
+            <span class="ep-num">▶</span>
+            <div class="ep-info">
+              <div class="ep-name">GHOST RIDER Appears?!</div>
+              <div class="ep-dur">Chapter Plus</div>
+            </div>
+            <div class="ep-play">▶</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- INFO TABLE -->
+      <div class="sidebar-lbl">Film Info</div>
+      <table class="info-table">
+        <tr><td>Creator</td>  <td>Chapter Plus</td></tr>
+        <tr><td>Type</td>     <td>Film / Short</td></tr>
+        <tr><td>Genres</td>   <td>Action, Comedy, Roleplay</td></tr>
+        <tr><td>Setting</td>  <td>Minecraft School RP</td></tr>
+        <tr><td>Rating</td>   <td><span style="color:var(--gold)">★★★★★</span></td></tr>
+      </table>
+
+      <!-- WATCH ON YOUTUBE -->
+      <div class="sidebar-lbl">Watch On</div>
+      <a
+        href="https://www.youtube.com/watch?v=jEGOMYHFFMw"
+        target="_blank"
+        rel="noopener"
+        style="display:flex;align-items:center;gap:10px;padding:10px 14px;background:var(--card);border:1px solid var(--border);border-radius:4px;text-decoration:none;transition:border-color .2s"
+        onmouseenter="this.style.borderColor='var(--red)'"
+        onmouseleave="this.style.borderColor='var(--border)'"
+      >
+        <span style="font-size:1.4rem">▶</span>
+        <div>
+          <div style="font-size:.84rem;font-weight:700;color:var(--text)">YouTube</div>
+          <div style="font-size:.7rem;color:var(--muted);margin-top:2px">Watch on youtube.com</div>
+        </div>
+        <span style="margin-left:auto;font-size:.7rem;color:var(--muted)">↗</span>
+      </a>
+
+      <!-- MORE LIKE THIS -->
+      <div class="sidebar-lbl">More Like This</div>
+      <div style="display:flex;flex-direction:column;gap:9px">
+        <a class="related-item" href="dragon-egg.html">
+          <div class="related-thumb">
+            <img
+              src="https://img.youtube.com/vi/OG1c3D0N2WY/mqdefault.jpg"
+              onerror="this.style.display='none'"
+              alt="The Search for the Dragon Egg"
+            />
+          </div>
+          <div class="related-info">
+            <div class="related-title">The Search for the Dragon Egg</div>
+            <div class="related-meta">Film · ★★★★★</div>
+          </div>
+        </a>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div>
+    <div class="footer-logo">NET<span>INIMA</span></div>
+    <p class="footer-tagline">The premier destination for Minecraft machinima. Stories built block by block, frame by frame.</p>
+  </div>
+  <div class="footer-col">
+    <h4>Browse</h4>
+    <a href="../index.html">Home</a>
+    <a href="#">All Series</a>
+    <a href="#">Top Rated</a>
+  </div>
+  <div class="footer-col">
+    <h4>Community</h4>
+    <a href="#">Submit Your Machinima</a>
+    <a href="#">Discord Server</a>
+    <a href="#">Awards</a>
+  </div>
+  <div class="footer-bottom">
+    <p>© 2024 Netinima · Not affiliated with Mojang or Microsoft</p>
+    <p>Built in the Overworld ⛏</p>
+  </div>
+</footer>
+
+<script>
+const EPISODES = [
+  { n: 1, title: 'GHOST RIDER Appears?!', dur: '', yt: 'jEGOMYHFFMw' },
+];
+
+function playEp(idx) {
+  const ep = EPISODES[idx]; if (!ep) return;
+  document.getElementById('player-wrap').innerHTML =
+    `<iframe src="https://www.youtube.com/embed/${ep.yt}?autoplay=1&rel=0"
+      allowfullscreen allow="autoplay; encrypted-media"></iframe>`;
+  document.getElementById('ep-name-lbl').textContent = ep.title;
+  document.querySelectorAll('.ep-item').forEach((el, i) => el.classList.toggle('ep-active', i === idx));
+  document.getElementById('player-wrap').scrollIntoView({ behavior: 'smooth', block: 'center' });
+}
+
+function openLB(ytId) {
+  document.getElementById('lb-iframe').src = `https://www.youtube.com/embed/${ytId}?autoplay=1&rel=0`;
+  document.getElementById('lightbox').classList.add('lb-open');
+}
+function closeLB(e) {
+  if (e && e.target !== e.currentTarget) return;
+  document.getElementById('lightbox').classList.remove('lb-open');
+  document.getElementById('lb-iframe').src = '';
+}
+window.addEventListener('scroll', () => {
+  document.getElementById('nav').classList.toggle('scrolled', window.scrollY > 40);
+});
+</script>
+</body>
+</html>
