@@ -3,19 +3,13 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
-  <!-- ============================================================
-    STEP 1 — Change the title below
-    Format: "Your Show Name — Netinima"
-  ============================================================ -->
   <title>Class of '25 — Netinima</title>
-
   <link rel="stylesheet" href="../style.css" />
   <link rel="stylesheet" href="../show.css" />
 </head>
 <body class="page-enter">
 
-<!-- LIGHTBOX (do not edit) -->
+<!-- LIGHTBOX -->
 <div class="lightbox" id="lightbox" onclick="closeLB(event)">
   <div class="lb-inner">
     <button class="lb-close" onclick="closeLB()">✕ CLOSE</button>
@@ -23,7 +17,7 @@
   </div>
 </div>
 
-<!-- NAV (do not edit) -->
+<!-- NAV -->
 <nav id="nav">
   <a class="nav-logo" href="../index.html">NET<span>INIMA</span></a>
   <ul class="nav-links">
@@ -39,33 +33,7 @@
   </div>
 </nav>
 
-
-<!-- ============================================================
-  HERO BANNER
-  ============================================================
-  STEP 2 — Set your hero background image.
-
-  OPTION A (recommended): Use a YouTube thumbnail as the background.
-    Replace HERO_VIDEO_ID with the YouTube video ID of your
-    first episode or a key scene. The thumbnail will fill the banner.
-    Example: if your video URL is youtube.com/watch?v=abc123XYZ
-             then HERO_VIDEO_ID = abc123XYZ
-
-  OPTION B: Use your own image file.
-    Put your image in the /images/ folder and replace the src with:
-    src="../images/your-image.jpg"
-
-  FALLBACK THEME — shown if the image fails to load.
-  Pick one class for .fallback-bg that matches your show's vibe:
-    t-night   = dark blue sky + green ground (overworld night)
-    t-cave    = dark cave / underground
-    t-nether  = red/orange hellscape
-    t-end     = dark purple void
-    t-ocean   = deep blue ocean
-    t-village = blue sky + green village
-    t-desert  = sandy yellow desert
-    t-snow    = icy blue winter biome
-============================================================ -->
+<!-- HERO -->
 <div class="show-hero">
   <div class="show-hero-bg">
     <img
@@ -73,51 +41,39 @@
       onerror="this.style.display='none';this.nextElementSibling.style.display='block'"
       alt="Class of '25"
     />
-    <!-- FALLBACK: change t-night to your chosen theme class -->
-    <div class="fallback-bg t-night" style="display:none;width:100%;height:100%;position:relative">
-      <!-- Optional: change the emojis to match your show's theme -->
-      <span style="position:absolute;left:30%;bottom:20px;font-size:6rem;opacity:.28">⚔️</span>
-      <span style="position:absolute;right:22%;bottom:20px;font-size:5rem;opacity:.18">🎬</span>
+    <div class="fallback-bg t-village" style="display:none;width:100%;height:100%;position:relative">
+      <span style="position:absolute;left:30%;bottom:20px;font-size:6rem;opacity:.28">🏫</span>
+      <span style="position:absolute;right:22%;bottom:20px;font-size:5rem;opacity:.18">🎒</span>
     </div>
   </div>
   <div class="show-hero-overlay"></div>
 
-  <!-- ============================================================
-    STEP 3 — Fill in the show info displayed on the hero banner
-  ============================================================ -->
   <div class="show-hero-content">
     <a class="show-back" href="../index.html">← Back to Netinima</a>
 
-    <!-- Genre tags: add or remove <span> elements as needed -->
     <div class="genre-row">
       <span class="genre-tag">Comedy</span>
       <span class="genre-tag">Roleplay</span>
     </div>
 
-    <!-- Main title -->
     <h1 class="show-title">Class of '25</h1>
 
-    <!-- Stats row -->
     <div class="show-meta">
-      <span class="stars">★★★★★</span>           <!-- Star rating: ★ = filled, change count -->
+      <span class="stars">★★★★★</span>
       <span class="dot"></span>
-      <span>9.0/10</span>                          <!-- Numeric rating -->
+      <span>9.0/10</span>
       <span class="dot"></span>
-      <span>2025-6</span>                            <!-- Year -->
+      <span>2025–26</span>
       <span class="dot"></span>
-      <span>1 Seasons</span>                       <!-- Seasons or "Film" -->
+      <span>1 Season</span>
       <span class="dot"></span>
-      <span>7 Episodes</span>                     <!-- Episode count or runtime for films -->
-      <span class="dot"></span>
-      <span>good views</span>                      <!-- View count -->
+      <span>7 Episodes</span>
     </div>
 
-    <!-- Short description (1–2 sentences shown on the hero) -->
     <p class="show-desc-short">
-     An absolutely unhinged high school story where crazy stuff happens for no reson at all
+      An absolutely unhinged high school story where crazy stuff happens for no reason at all.
     </p>
 
-    <!-- Buttons: the trailer button calls openLB() with your trailer video ID -->
     <div class="show-btns">
       <button class="btn btn-primary" onclick="playEp(0)">▶&nbsp; Play Episode 1</button>
       <button class="btn btn-secondary" onclick="openLB('5THqnEpMZMo')">🎬&nbsp; Watch Trailer</button>
@@ -125,37 +81,25 @@
   </div>
 </div>
 
-
 <!-- BODY -->
 <div class="show-body">
 
-  <!-- ============================================================
-    VIDEO PLAYER
-    The player auto-loads when a viewer clicks an episode.
-    The label updates to show which episode is playing.
-    Do not edit this section — it's controlled by the JS at the bottom.
-  ============================================================ -->
   <div class="player-section">
-    <div class="player-label">Now Playing — <span id="ep-name-lbl">Episode 1 Title</span></div>
+    <!-- FIX: updated placeholder text to real episode title -->
+    <div class="player-label">Now Playing — <span id="ep-name-lbl">FEMBOYS AND MEDS!</span></div>
     <div class="player-wrap" id="player-wrap">
       <div class="player-placeholder" onclick="playEp(0)">
         <div class="big-play">▶</div>
-        <p>Click to play &nbsp;"Episode 1 Title"</p>
+        <p>Click to play &nbsp;"FEMBOYS AND MEDS!"</p>
       </div>
     </div>
   </div>
 
-
   <div class="show-layout">
 
-    <!-- ── LEFT COLUMN ── -->
+    <!-- LEFT COLUMN -->
     <div>
 
-      <!-- ============================================================
-        STEP 4 — TRAILER
-        Replace TRAILER_VIDEO_ID with your YouTube trailer video ID.
-        The thumbnail is pulled automatically from YouTube.
-      ============================================================ -->
       <div class="trailer-section">
         <h3>Official Trailer</h3>
         <div class="trailer-wrap">
@@ -171,20 +115,6 @@
         </div>
       </div>
 
-
-      <!-- ============================================================
-        STEP 5 — SCREENSHOTS / GALLERY
-        Add up to 4–6 screenshots from your show.
-
-        For each screenshot:
-          - Replace SCREENSHOT_VIDEO_ID with a YouTube video ID
-            (the thumbnail from that video will be used as the image)
-          - OR replace the <img> src with a path to your own image:
-            src="../images/your-screenshot.jpg"
-          - Update the label text inside .gallery-img-lbl
-
-        Copy/paste a <div class="gallery-img"> block to add more shots.
-      ============================================================ -->
       <div class="gallery-section">
         <h3>Screenshots</h3>
         <div class="gallery">
@@ -196,7 +126,7 @@
               alt="Screenshot 1"
               style="width:100%;height:100%;object-fit:cover;display:block"
             />
-            <div class="gallery-img-lbl"></div>
+            <div class="gallery-img-lbl">Episode 1 — FEMBOYS AND MEDS!</div>
           </div>
 
           <div class="gallery-img">
@@ -206,49 +136,50 @@
               alt="Screenshot 2"
               style="width:100%;height:100%;object-fit:cover;display:block"
             />
-            <div class="gallery-img-lbl"></div>
+            <div class="gallery-img-lbl">Episode 6 — LOOSE ENDS!</div>
           </div>
 
-          <!-- Add more screenshots by copying a block above ↑ -->
+          <div class="gallery-img">
+            <img
+              src="https://img.youtube.com/vi/qVCYgq8nbPw/mqdefault.jpg"
+              onerror="this.style.display='none'"
+              alt="Screenshot 3"
+              style="width:100%;height:100%;object-fit:cover;display:block"
+            />
+            <div class="gallery-img-lbl">Episode 5 — WINTER BALL!</div>
+          </div>
+
+          <div class="gallery-img">
+            <img
+              src="https://img.youtube.com/vi/LWbQ4WEqXSY/mqdefault.jpg"
+              onerror="this.style.display='none'"
+              alt="Screenshot 4"
+              style="width:100%;height:100%;object-fit:cover;display:block"
+            />
+            <div class="gallery-img-lbl">Episode 7 — TOGETHER AT LAST!</div>
+          </div>
 
         </div>
       </div>
 
-
-      <!-- ============================================================
-        STEP 6 — ABOUT / DESCRIPTION
-        Write a full description of your show here.
-        Use separate <p> tags for each paragraph.
-      ============================================================ -->
       <div class="about-section">
         <h3>About This Series</h3>
         <div class="about-text">
           <p>
             There isn't much more I could say other than the most unhinged comedy show of all time. If you want a stupidly stupid comedy this is the show to watch.
           </p>
-          <!-- Add more <p> tags as needed -->
+          <p>
+            Created by Cratin Studios, Class of '25 follows a completely chaotic high school where nothing makes sense and everything is somehow funnier for it. All 7 episodes are now available to watch.
+          </p>
         </div>
       </div>
 
-    </div><!-- end left column -->
+    </div>
 
-
-    <!-- ── RIGHT SIDEBAR ── -->
+    <!-- RIGHT SIDEBAR -->
     <div>
 
-      <!-- ============================================================
-        STEP 7 — EPISODES LIST
-        Add one block per episode inside .ep-list.
-
-        Each episode needs:
-          - id="epi-N"  where N starts at 0 (not 1!)
-          - onclick="playEp(N)"
-          - The first episode should have class "ep-item ep-active"
-          - All other episodes just have class "ep-item"
-
-        The actual video ID is set in the EPISODES array in the
-        JavaScript section at the bottom of this file (Step 8).
-      ============================================================ -->
+      <!-- FIX: all 7 episodes now in the HTML list, matching the JS array -->
       <div class="ep-section">
         <h3>Episodes</h3>
         <div class="ep-list" id="ep-list">
@@ -257,7 +188,7 @@
             <span class="ep-num">01</span>
             <div class="ep-info">
               <div class="ep-name">FEMBOYS AND MEDS!</div>
-              <div class="ep-dur">09:17</div>    <!-- e.g. 18:32 -->
+              <div class="ep-dur">09:17</div>
             </div>
             <div class="ep-play">▶</div>
           </div>
@@ -274,99 +205,89 @@
           <div class="ep-item" id="epi-2" onclick="playEp(2)">
             <span class="ep-num">03</span>
             <div class="ep-info">
-              <div class="ep-name">Episode 3 Title</div>
-              <div class="ep-dur">00:00</div>
+              <div class="ep-name">STALKER?!</div>
+              <div class="ep-dur">09:37</div>
             </div>
             <div class="ep-play">▶</div>
           </div>
 
-          <!-- Copy a block above ↑ to add more episodes.
-               Remember to increment the number in id="epi-N" and onclick="playEp(N)" -->
+          <div class="ep-item" id="epi-3" onclick="playEp(3)">
+            <span class="ep-num">04</span>
+            <div class="ep-info">
+              <div class="ep-name">PRINCESS PARTY!</div>
+              <div class="ep-dur">09:04</div>
+            </div>
+            <div class="ep-play">▶</div>
+          </div>
+
+          <div class="ep-item" id="epi-4" onclick="playEp(4)">
+            <span class="ep-num">05</span>
+            <div class="ep-info">
+              <div class="ep-name">WINTER BALL!</div>
+              <div class="ep-dur">10:01</div>
+            </div>
+            <div class="ep-play">▶</div>
+          </div>
+
+          <div class="ep-item" id="epi-5" onclick="playEp(5)">
+            <span class="ep-num">06</span>
+            <div class="ep-info">
+              <div class="ep-name">LOOSE ENDS!</div>
+              <div class="ep-dur">13:14</div>
+            </div>
+            <div class="ep-play">▶</div>
+          </div>
+
+          <div class="ep-item" id="epi-6" onclick="playEp(6)">
+            <span class="ep-num">07</span>
+            <div class="ep-info">
+              <div class="ep-name">TOGETHER AT LAST!</div>
+              <div class="ep-dur">15:16</div>
+            </div>
+            <div class="ep-play">▶</div>
+          </div>
 
         </div>
       </div>
 
-
-      <!-- ============================================================
-        STEP 9 — SERIES INFO TABLE
-        Update the values in the right column of each row.
-      ============================================================ -->
       <div class="sidebar-lbl">Series Info</div>
       <table class="info-table">
-        <tr><td>Creator</td>    <td>Cratin Studios</td></tr>
-        <tr><td>Year</td>       <td>2025-6</td></tr>
-        <tr><td>Seasons</td>    <td>1 Season</td></tr>           <!-- or "Film" -->
-        <tr><td>Episodes</td>   <td>7 Episodes</td></tr>         <!-- or "1 Film" -->
-        <tr><td>Runtime</td>    <td>11 min avg</td></tr>         <!-- or "48 min" for films -->
-        <tr><td>Rating</td>     <td><span style="color:var(--gold)">★★★★★</span> 9.0/10</td></tr>
-        <tr><td>Views</td>      <td><span style="color:var(--green)">good views</span></td></tr>
+        <tr><td>Creator</td>  <td>Cratin Studios</td></tr>
+        <tr><td>Year</td>     <td>2025–26</td></tr>
+        <tr><td>Seasons</td>  <td>1 Season</td></tr>
+        <tr><td>Episodes</td> <td>7 Episodes</td></tr>
+        <tr><td>Runtime</td>  <td>11 min avg</td></tr>
+        <tr><td>Rating</td>   <td><span style="color:var(--gold)">★★★★★</span> 9.0/10</td></tr>
       </table>
 
-
-      <!-- ============================================================
-        STEP 10 — MORE LIKE THIS (related shows)
-        Link to other shows on your site.
-        Replace the href, image ID, title, and meta for each.
-
-        To link to a show: href="../shows/SHOWFILENAME.html"
-        Thumbnail: use the YouTube video ID for that show's first episode.
-
-        Copy/paste a block to add more related shows.
-      ============================================================ -->
+      <!-- FIX: removed broken placeholder related show links -->
       <div class="sidebar-lbl">More Like This</div>
       <div style="display:flex;flex-direction:column;gap:9px">
-
-        <a class="related-item" href="../shows/RELATED_SHOW_1.html">
+        <a class="related-item" href="ghost-rider.html">
           <div class="related-thumb">
-            <img
-              src="https://img.youtube.com/vi/RELATED_VIDEO_ID_1/mqdefault.jpg"
-              onerror="this.style.display='none'"
-              alt="Related Show 1"
-            />
+            <img src="https://img.youtube.com/vi/jEGOMYHFFMw/mqdefault.jpg" onerror="this.style.display='none'" alt="GHOST RIDER Appears?!" />
           </div>
           <div class="related-info">
-            <div class="related-title">Related Show Title 1</div>
-            <div class="related-meta">2 Seasons · ★★★★★</div>
+            <div class="related-title">GHOST RIDER Appears?!</div>
+            <div class="related-meta">Film · ★★★★★</div>
           </div>
         </a>
-
-        <a class="related-item" href="../shows/RELATED_SHOW_2.html">
+        <a class="related-item" href="dragon-egg.html">
           <div class="related-thumb">
-            <img
-              src="https://img.youtube.com/vi/RELATED_VIDEO_ID_2/mqdefault.jpg"
-              onerror="this.style.display='none'"
-              alt="Related Show 2"
-            />
+            <img src="https://img.youtube.com/vi/OG1c3D0N2WY/mqdefault.jpg" onerror="this.style.display='none'" alt="The Search for the Dragon Egg" />
           </div>
           <div class="related-info">
-            <div class="related-title">Related Show Title 2</div>
-            <div class="related-meta">1 Season · ★★★★</div>
+            <div class="related-title">The Search for the Dragon Egg</div>
+            <div class="related-meta">Film · ★★★★★</div>
           </div>
         </a>
-
-        <a class="related-item" href="../shows/RELATED_SHOW_3.html">
-          <div class="related-thumb">
-            <img
-              src="https://img.youtube.com/vi/RELATED_VIDEO_ID_3/mqdefault.jpg"
-              onerror="this.style.display='none'"
-              alt="Related Show 3"
-            />
-          </div>
-          <div class="related-info">
-            <div class="related-title">Related Show Title 3</div>
-            <div class="related-meta">Film · ★★★★</div>
-          </div>
-        </a>
-
       </div>
 
-    </div><!-- end sidebar -->
+    </div>
+  </div>
+</div>
 
-  </div><!-- end show-layout -->
-</div><!-- end show-body -->
-
-
-<!-- FOOTER (do not edit) -->
+<!-- FOOTER -->
 <footer>
   <div>
     <div class="footer-logo">NET<span>INIMA</span></div>
@@ -385,40 +306,22 @@
     <a href="#">Awards</a>
   </div>
   <div class="footer-bottom">
-    <p>© 2024 Netinima · Not affiliated with Mojang or Microsoft</p>
+    <p>© 2025 Netinima · Not affiliated with Mojang or Microsoft</p>
     <p>Built in the Overworld ⛏</p>
   </div>
 </footer>
 
-
-<!-- ============================================================
-  STEP 8 — EPISODES DATA (JavaScript)
-
-  This array powers the video player. Add one entry per episode.
-  Order must match the episode list in Step 7 above.
-
-  Fields:
-    n     → episode number (shown in the list)
-    title → episode title
-    dur   → runtime string e.g. "18:32"
-    yt    → YouTube video ID for this episode
-              (the part after ?v= in the YouTube URL)
-
-  For a FILM (single entry), just have one object in the array.
-============================================================ -->
 <script>
 const EPISODES = [
-  { n: 1, title: 'FEMBOYS AND MEDS!', dur: '09:17', yt: 'TA6L9-k7KHg' },
-  { n: 2, title: 'BREN SAVED!', dur: '09:42', yt: 'bdAJc5ic_qk' },
-  { n: 3, title: 'STALKER?!', dur: '09:37', yt: 'IAIA8uMOG-o' },
-  { n: 4, title: 'PRINCESS PARTY!', dur: '09:04', yt: '6NOZ1OuS8Ag' },
-  { n: 5, title: 'WINTER BALL!', dur: '10:01', yt: 'qVCYgq8nbPw' },
-  { n: 6, title: 'LOOSE ENDS!', dur: '13:14', yt: 'Rw7cMl_pPd0' },
-  { n: 7, title: 'TOGETHER AT LAST!', dur: '15:16', yt: 'LWbQ4WEqXSY' },
-  // Copy a line above ↑ to add more episodes
+  { n: 1, title: 'FEMBOYS AND MEDS!',  dur: '09:17', yt: 'TA6L9-k7KHg' },
+  { n: 2, title: 'BREN SAVED!',        dur: '09:42', yt: 'bdAJc5ic_qk' },
+  { n: 3, title: 'STALKER?!',          dur: '09:37', yt: 'IAIA8uMOG-o' },
+  { n: 4, title: 'PRINCESS PARTY!',    dur: '09:04', yt: '6NOZ1OuS8Ag' },
+  { n: 5, title: 'WINTER BALL!',       dur: '10:01', yt: 'qVCYgq8nbPw' },
+  { n: 6, title: 'LOOSE ENDS!',        dur: '13:14', yt: 'Rw7cMl_pPd0' },
+  { n: 7, title: 'TOGETHER AT LAST!',  dur: '15:16', yt: 'LWbQ4WEqXSY' },
 ];
 
-// ── Player & lightbox logic (do not edit below) ──
 function playEp(idx) {
   const ep = EPISODES[idx]; if (!ep) return;
   document.getElementById('player-wrap').innerHTML =
@@ -442,6 +345,7 @@ window.addEventListener('scroll', () => {
   document.getElementById('nav').classList.toggle('scrolled', window.scrollY > 40);
 });
 </script>
+<script src="../search.js"></script>
 
 </body>
 </html>
