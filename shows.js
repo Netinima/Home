@@ -55,7 +55,7 @@ const SHOW_REGISTRY = [
     file:     'shows/Class-25.html',
     title:    'Class of 25',
     year:     '2025-6',
-    type:     'Show',
+    type:     'Series',
     seasons:  '1',
     episodes: '7',
     runtime:  '12 minute average',
