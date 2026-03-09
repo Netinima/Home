@@ -128,3 +128,7 @@ footer {
 
 @keyframes fadeIn { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
 .page-enter { animation: fadeIn .35s ease; }
+
+/* ── SEARCH ── */
+.nav-search.has-value { border-bottom-color: var(--green); }
+.nav-right { position: relative; }

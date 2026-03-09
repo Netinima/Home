@@ -152,7 +152,10 @@
     <li><a href="#series">Series</a></li>
   </ul>
   <div class="nav-right">
-    <input class="nav-search" id="search-input" type="text" placeholder="Search…" oninput="filterShows(this.value)" />
+    <input class="nav-search" id="nav-search-input" type="text" placeholder="Search shows…"
+      oninput="filterShows(this.value); this.classList.toggle('has-value', this.value.length > 0)"
+      onkeydown="if(event.key==='Escape'){clearSearch(event)}"
+    />
     <div class="nav-avatar">🎮</div>
   </div>
 </nav>
@@ -191,6 +194,7 @@
 </footer>
 
 <script src="shows.js"></script>
+<script src="search.js"></script>
 <script>
 // ── BUILD CARD ──
 function buildCard(s) {
@@ -334,12 +338,67 @@ function filterGenre(genre, btn) {
 // ── SEARCH ──
 function filterShows(q) {
   q = q.toLowerCase().trim();
-  buildGrid(!q ? SHOW_REGISTRY : SHOW_REGISTRY.filter(s =>
+  const results = !q ? SHOW_REGISTRY : SHOW_REGISTRY.filter(s =>
     s.title.toLowerCase().includes(q) ||
     s.genres.some(g => g.toLowerCase().includes(q)) ||
     s.type.toLowerCase().includes(q) ||
     s.year.includes(q)
-  ));
+  );
+
+  // Update the grid title to show search state
+  const title = document.getElementById('grid-title');
+  if (q) {
+    title.innerHTML = `Search results for "<span style="color:var(--green)">${q}</span>" <span style="font-size:.8rem;color:var(--muted);font-family:var(--fm);letter-spacing:1px">(${results.length} found)</span>`;
+  }
+
+  buildGrid(results, q !== '');
+
+  // Update URL so search is shareable / bookmarkable
+  const url = new URL(window.location);
+  if (q) { url.searchParams.set('q', q); } else { url.searchParams.delete('q'); }
+  window.history.replaceState({}, '', url);
+}
+
+// ── BUILD GRID (extended to handle search state) ──
+// (overrides earlier buildGrid to support the "no results" state)
+const _buildGrid = buildGrid;
+function buildGrid(shows, isSearch = false) {
+  const wrap = document.getElementById('grid-wrap');
+  const title = document.getElementById('grid-title');
+  wrap.innerHTML = '';
+
+  if (!isSearch) {
+    title.textContent = `All Shows${shows.length > 1 ? ` (${shows.length})` : ''}`;
+  }
+
+  if (!shows.length && isSearch) {
+    wrap.innerHTML = `<div class="no-shows">
+      <p>No shows matched your search.</p>
+      <p><a href="index.html" onclick="clearSearch(event)">Clear search</a> to see all shows.</p>
+    </div>`;
+    return;
+  }
+
+  if (!shows.length) {
+    wrap.innerHTML = `<div class="no-shows">
+      <p>No shows here yet.</p>
+      <p>Duplicate <a href="shows/TEMPLATE.html">TEMPLATE.html</a>, fill it in,<br>then add it to <strong>shows.js</strong> to appear here.</p>
+    </div>`;
+    return;
+  }
+
+  const grid = document.createElement('div');
+  grid.className = 'shows-grid';
+  shows.forEach(s => grid.appendChild(buildCard(s)));
+  wrap.appendChild(grid);
+}
+
+function clearSearch(e) {
+  e.preventDefault();
+  document.getElementById('search-input').value = '';
+  filterShows('');
+  document.getElementById('grid-title').textContent = `All Shows${SHOW_REGISTRY.length > 1 ? ` (${SHOW_REGISTRY.length})` : ''}`;
+  window.history.replaceState({}, '', window.location.pathname);
 }
 
 // ── INIT ──
@@ -353,6 +412,19 @@ function filterShows(q) {
   buildGrid(shows);
   const yr = shows.length ? Math.max(...shows.map(s => parseInt(s.year)||2024)) : new Date().getFullYear();
   document.getElementById('footer-copy').textContent = `© ${yr} Netinima · Not affiliated with Mojang or Microsoft`;
+
+  // Check for ?q= URL param (e.g. redirected from a show page search)
+  const params = new URLSearchParams(window.location.search);
+  const q = params.get('q');
+  if (q) {
+    const input = document.getElementById('nav-search-input');
+    input.value = q;
+    filterShows(q);
+    // Scroll down to results after a short delay
+    setTimeout(() => {
+      document.getElementById('all-shows').scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }, 300);
+  }
 })();
 
 window.addEventListener('scroll', () => {

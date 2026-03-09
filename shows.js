@@ -64,7 +64,7 @@ const SHOW_REGISTRY = [
     rating:   '9.0',
     badge:    '',
     genres:   ['Roleplay','Comedy'],
-    thumbYt:  'OG1c3D0N2WY',
+    thumbYt:  'TA6L9-k7KHg',
     heroDesc: 'An absolutely unhinged high school story where crazy stuff happens for no reson at all',
     featured: true,
   },
