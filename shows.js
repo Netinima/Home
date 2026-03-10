@@ -53,7 +53,7 @@ const SHOW_REGISTRY = [
   {
     id:       'Class-25',
     file:     'shows/Class-25.html',
-    title:    'Class of 25',
+    title:    "Class of '25",
     year:     '2025-6',
     type:     'Series',
     seasons:  '1',
@@ -62,7 +62,7 @@ const SHOW_REGISTRY = [
     views:    'good views',
     stars:    '★★★★★',
     rating:   '9.0',
-    badge:    '',
+    badge:    'NEW',
     genres:   ['Roleplay','Comedy'],
     thumbYt:  'TA6L9-k7KHg',
     heroDesc: 'An absolutely unhinged high school story where crazy stuff happens for no reson at all',
