@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- ============================================================
+    STEP 1 — Change the title below
+    Format: "Your Show Name — Netinima"
+  ============================================================ -->
+  <title>Back In Time — Netinima</title>
+
+  <link rel="stylesheet" href="../style.css" />
+  <link rel="stylesheet" href="../show.css" />
+</head>
+<body class="page-enter">
+
+<!-- LIGHTBOX (do not edit) -->
+<div class="lightbox" id="lightbox" onclick="closeLB(event)">
+  <div class="lb-inner">
+    <button class="lb-close" onclick="closeLB()">✕ CLOSE</button>
+    <iframe id="lb-iframe" allowfullscreen allow="autoplay; encrypted-media"></iframe>
+  </div>
+</div>
+
+<!-- NAV (do not edit) -->
+<nav id="nav">
+  <a class="nav-logo" href="../index.html">NET<span>INIMA</span></a>
+  <ul class="nav-links">
+    <li><a href="../index.html">Home</a></li>
+    <li><a href="#">Series</a></li>
+    <li><a href="#">Films</a></li>
+    <li><a href="#">Shorts</a></li>
+    <li><a href="#">My List</a></li>
+  </ul>
+  <div class="nav-right">
+    <input class="nav-search" id="nav-search-input" type="text" placeholder="Search shows…" />
+    <div class="nav-avatar">🎮</div>
+  </div>
+</nav>
+
+
+<!-- ============================================================
+  HERO BANNER
+  ============================================================
+  STEP 2 — Set your hero background image.
+
+  OPTION A (recommended): Use a YouTube thumbnail as the background.
+    Replace HERO_VIDEO_ID with the YouTube video ID of your
+    first episode or a key scene. The thumbnail will fill the banner.
+    Example: if your video URL is youtube.com/watch?v=abc123XYZ
+             then HERO_VIDEO_ID = abc123XYZ
+
+  OPTION B: Use your own image file.
+    Put your image in the /images/ folder and replace the src with:
+    src="../images/your-image.jpg"
+
+  FALLBACK THEME — shown if the image fails to load.
+  Pick one class for .fallback-bg that matches your show's vibe:
+    t-night   = dark blue sky + green ground (overworld night)
+    t-cave    = dark cave / underground
+    t-nether  = red/orange hellscape
+    t-end     = dark purple void
+    t-ocean   = deep blue ocean
+    t-village = blue sky + green village
+    t-desert  = sandy yellow desert
+    t-snow    = icy blue winter biome
+============================================================ -->
+<div class="show-hero">
+  <div class="show-hero-bg">
+    <img
+      src="https://img.youtube.com/vi/IiM3Bw6p-NU/maxresdefault.jpg"
+      onerror="this.style.display='none';this.nextElementSibling.style.display='block'"
+      alt="Back In Time"
+    />
+    <!-- FALLBACK: change t-night to your chosen theme class -->
+    <div class="fallback-bg t-night" style="display:none;width:100%;height:100%;position:relative">
+      <!-- Optional: change the emojis to match your show's theme -->
+      <span style="position:absolute;left:30%;bottom:20px;font-size:6rem;opacity:.28">⚔️</span>
+      <span style="position:absolute;right:22%;bottom:20px;font-size:5rem;opacity:.18">🎬</span>
+    </div>
+  </div>
+  <div class="show-hero-overlay"></div>
+
+  <!-- ============================================================
+    STEP 3 — Fill in the show info displayed on the hero banner
+  ============================================================ -->
+  <div class="show-hero-content">
+    <a class="show-back" href="../index.html">← Back to Netinima</a>
+
+    <!-- Genre tags: add or remove <span> elements as needed -->
+    <div class="genre-row">
+      <span class="genre-tag">Adventure</span>
+    </div>
+
+    <!-- Main title -->
+    <h1 class="show-title">Back In Time</h1>
+
+    <!-- Stats row -->
+    <div class="show-meta">
+      <span class="stars">★★★★★</span>           <!-- Star rating: ★ = filled, change count -->
+      <span class="dot"></span>
+      <span>9.0/10</span>                          <!-- Numeric rating -->
+      <span class="dot"></span>
+      <span>2014</span>                            <!-- Year -->
+      <span class="dot"></span>
+      <span>Film</span>                       <!-- Seasons or "Film" -->
+      <span class="dot"></span>
+      <span>1 Film</span>                     <!-- Episode count or runtime for films -->
+      <span class="dot"></span>
+      <span>2.6 Million views</span>                      <!-- View count -->
+    </div>
+
+    <!-- Short description (1–2 sentences shown on the hero) -->
+    <p class="show-desc-short">
+        Someone else tell me
+    </p>
+
+    <!-- Buttons: the trailer button calls openLB() with your trailer video ID -->
+    <div class="show-btns">
+      <button class="btn btn-primary" onclick="playEp(0)">▶&nbsp; Play Episode 1</button>
+      <button class="btn btn-secondary" onclick="openLB('IiM3Bw6p-NU')">🎬&nbsp; Watch Trailer</button>
+    </div>
+  </div>
+</div>
+
+
+<!-- BODY -->
+<div class="show-body">
+
+  <!-- ============================================================
+    VIDEO PLAYER
+    The player auto-loads when a viewer clicks an episode.
+    The label updates to show which episode is playing.
+    ⚠️  Update the two "Episode 1 Title" texts below to match
+        your actual first episode title.
+  ============================================================ -->
+  <div class="player-section">
+    <div class="player-label">Now Playing — <span id="ep-name-lbl">Back In Time</span></div>
+    <div class="player-wrap" id="player-wrap">
+      <div class="player-placeholder" onclick="playEp(0)">
+        <div class="big-play">▶</div>
+        <p>Click to play &nbsp;"Back In Time"</p>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="show-layout">
+
+    <!-- ── LEFT COLUMN ── -->
+    <div>
+
+      <!-- ============================================================
+        STEP 4 — TRAILER
+        Replace TRAILER_VIDEO_ID with your YouTube trailer video ID.
+        The thumbnail is pulled automatically from YouTube.
+      ============================================================ -->
+      <div class="trailer-section">
+        <h3>Official Trailer</h3>
+        <div class="trailer-wrap">
+          <div class="trailer-thumb" onclick="openLB('IiM3Bw6p-NU')">
+            <img
+              src="https://img.youtube.com/vi/IiM3Bw6p-NU/mqdefault.jpg"
+              onerror="this.style.display='none'"
+              alt="Trailer"
+            />
+            <div class="trailer-play">▶</div>
+            <div class="trailer-badge">▶ TRAILER</div>
+          </div>
+        </div>
+      </div>
+
+
+      <!-- ============================================================
+        STEP 5 — SCREENSHOTS / GALLERY
+        Add up to 4–6 screenshots from your show.
+
+        For each screenshot:
+          - Replace SCREENSHOT_VIDEO_ID with a YouTube video ID
+            (the thumbnail from that video will be used as the image)
+          - OR replace the <img> src with a path to your own image:
+            src="../images/your-screenshot.jpg"
+          - Update the label text inside .gallery-img-lbl
+
+        Copy/paste a <div class="gallery-img"> block to add more shots.
+      ============================================================ -->
+      <div class="gallery-section">
+        <h3>Screenshots</h3>
+        <div class="gallery">
+
+          <div class="gallery-img">
+            <img
+              src="https://img.youtube.com/vi/IiM3Bw6p-NU/mqdefault.jpg"
+              onerror="this.style.display='none'"
+              alt="Screenshot 1"
+              style="width:100%;height:100%;object-fit:cover;display:block"
+            />
+            <div class="gallery-img-lbl">Thumbnail</div>
+          </div>
+
+          <!-- Add more screenshots by copying a block above ↑ -->
+
+        </div>
+      </div>
+
+
+      <!-- ============================================================
+        STEP 6 — ABOUT / DESCRIPTION
+        Write a full description of your show here.
+        Use separate <p> tags for each paragraph.
+      ============================================================ -->
+      <div class="about-section">
+        <h3>About This Series</h3>
+        <div class="about-text">
+          <p>
+            IDK Someone else can do it
+          </p>
+          <p>
+          </p>
+          <!-- Add more <p> tags as needed -->
+        </div>
+      </div>
+
+    </div><!-- end left column -->
+
+
+    <!-- ── RIGHT SIDEBAR ── -->
+    <div>
+
+      <!-- ============================================================
+        STEP 7 — EPISODES LIST
+        Add one block per episode inside .ep-list.
+
+        Each episode needs:
+          - id="epi-N"  where N starts at 0 (not 1!)
+          - onclick="playEp(N)"
+          - The first episode should have class "ep-item ep-active"
+          - All other episodes just have class "ep-item"
+
+        The actual video ID is set in the EPISODES array in the
+        JavaScript section at the bottom of this file (Step 8).
+      ============================================================ -->
+      <div class="ep-section">
+        <h3>Episodes</h3>
+        <div class="ep-list" id="ep-list">
+
+          <div class="ep-item ep-active" id="epi-0" onclick="playEp(0)">
+            <span class="ep-num">01</span>
+            <div class="ep-info">
+              <div class="ep-name">Back In Time</div>
+              <div class="ep-dur">02:21</div>    <!-- e.g. 18:32 -->
+            </div>
+            <div class="ep-play">▶</div>
+          </div>
+
+          <!-- Copy a block above ↑ to add more episodes.
+               Remember to increment the number in id="epi-N" and onclick="playEp(N)" -->
+
+        </div>
+      </div>
+
+
+      <!-- ============================================================
+        STEP 9 — SERIES INFO TABLE
+        Update the values in the right column of each row.
+      ============================================================ -->
+      <div class="sidebar-lbl">Series Info</div>
+      <table class="info-table">
+        <tr><td>Creator</td>    <td>SkyDoesEverything</td></tr>
+        <tr><td>Year</td>       <td>2014</td></tr>
+        <tr><td>Seasons</td>    <td>Film</td></tr>           <!-- or "Film" -->
+        <tr><td>Episodes</td>   <td>1 Film</td></tr>         <!-- or "1 Film" -->
+        <tr><td>Runtime</td>    <td>02:21</td></tr>         <!-- or "48 min" for films -->
+        <tr><td>Rating</td>     <td><span style="color:var(--gold)">★★★★★</span> 9.0/10</td></tr>
+        <tr><td>Views</td>      <td><span style="color:var(--green)">2.6M views</span></td></tr>
+      </table>
+
+
+      <!-- ============================================================
+        STEP 10 — MORE LIKE THIS (related shows)
+        Link to other shows on your site.
+        Replace the href, image ID, title, and meta for each.
+
+        To link to a show: href="../shows/SHOWFILENAME.html"
+        Thumbnail: use the YouTube video ID for that show's first episode.
+
+        ⚠️  IMPORTANT: Delete any blocks you don't fill in!
+            Unfilled placeholder links (RELATED_SHOW_1.html etc.)
+            will show as broken on the live site. If you only have
+            1 related show, delete the other 2 blocks. If you have
+            none yet, delete all 3 and replace with:
+            <p style="font-size:.8rem;color:var(--muted);font-weight:600">More shows coming soon.</p>
+
+        Copy/paste a block to add more related shows.
+      ============================================================ -->
+      <div class="sidebar-lbl">More Like This</div>
+      <div style="display:flex;flex-direction:column;gap:9px">
+
+        <a class="related-item" href="../shows/RELATED_SHOW_1.html">
+          <div class="related-thumb">
+            <img
+              src="https://img.youtube.com/vi/RELATED_VIDEO_ID_1/mqdefault.jpg"
+              onerror="this.style.display='none'"
+              alt="Related Show 1"
+            />
+          </div>
+          <div class="related-info">
+            <div class="related-title">Related Show Title 1</div>
+            <div class="related-meta">2 Seasons · ★★★★★</div>
+          </div>
+        </a>
+
+        <a class="related-item" href="../shows/RELATED_SHOW_2.html">
+          <div class="related-thumb">
+            <img
+              src="https://img.youtube.com/vi/RELATED_VIDEO_ID_2/mqdefault.jpg"
+              onerror="this.style.display='none'"
+              alt="Related Show 2"
+            />
+          </div>
+          <div class="related-info">
+            <div class="related-title">Related Show Title 2</div>
+            <div class="related-meta">1 Season · ★★★★</div>
+          </div>
+        </a>
+
+        <a class="related-item" href="../shows/RELATED_SHOW_3.html">
+          <div class="related-thumb">
+            <img
+              src="https://img.youtube.com/vi/RELATED_VIDEO_ID_3/mqdefault.jpg"
+              onerror="this.style.display='none'"
+              alt="Related Show 3"
+            />
+          </div>
+          <div class="related-info">
+            <div class="related-title">Related Show Title 3</div>
+            <div class="related-meta">Film · ★★★★</div>
+          </div>
+        </a>
+
+      </div>
+
+    </div><!-- end sidebar -->
+
+  </div><!-- end show-layout -->
+</div><!-- end show-body -->
+
+
+<!-- FOOTER (do not edit) -->
+<footer>
+  <div>
+    <div class="footer-logo">NET<span>INIMA</span></div>
+    <p class="footer-tagline">The premier destination for Minecraft machinima. Stories built block by block, frame by frame.</p>
+  </div>
+  <div class="footer-col">
+    <h4>Browse</h4>
+    <a href="../index.html">Home</a>
+    <a href="#">All Series</a>
+    <a href="#">Top Rated</a>
+  </div>
+  <div class="footer-col">
+    <h4>Community</h4>
+    <a href="https://forms.gle/u8sR4SW6UH8DXyA67" target="_blank" rel="noopener">Submit Your Machinima</a>
+    <a href="#">Discord Server</a>
+    <a href="#">Awards</a>
+  </div>
+  <div class="footer-bottom">
+    <p>© 2024 Netinima · Not affiliated with Mojang or Microsoft</p>
+    <p>Built in the Overworld ⛏</p>
+  </div>
+</footer>
+
+
+<!-- ============================================================
+  STEP 8 — EPISODES DATA (JavaScript)
+
+  This array powers the video player. Add one entry per episode.
+  Order must match the episode list in Step 7 above.
+
+  Fields:
+    n     → episode number (shown in the list)
+    title → episode title
+    dur   → runtime string e.g. "18:32"
+    yt    → YouTube video ID for this episode
+              (the part after ?v= in the YouTube URL)
+
+  For a FILM (single entry), just have one object in the array.
+============================================================ -->
+<script>
+const EPISODES = [
+  { n: 1, title: 'Back In Time', dur: '02:21', yt: 'IiM3Bw6p-NU' },
+  // Copy a line above ↑ to add more episodes
+];
+
+// ── Player & lightbox logic (do not edit below) ──
+function playEp(idx) {
+  const ep = EPISODES[idx]; if (!ep) return;
+  document.getElementById('player-wrap').innerHTML =
+    `<iframe src="https://www.youtube.com/embed/${ep.yt}?autoplay=1&rel=0"
+      allowfullscreen allow="autoplay; encrypted-media"></iframe>`;
+  document.getElementById('ep-name-lbl').textContent = ep.title;
+  document.querySelectorAll('.ep-item').forEach((el, i) => el.classList.toggle('ep-active', i === idx));
+  document.getElementById('player-wrap').scrollIntoView({ behavior: 'smooth', block: 'center' });
+}
+
+function openLB(ytId) {
+  document.getElementById('lb-iframe').src = `https://www.youtube.com/embed/${ytId}?autoplay=1&rel=0`;
+  document.getElementById('lightbox').classList.add('lb-open');
+}
+function closeLB(e) {
+  if (e && e.target !== e.currentTarget) return;
+  document.getElementById('lightbox').classList.remove('lb-open');
+  document.getElementById('lb-iframe').src = '';
+}
+window.addEventListener('scroll', () => {
+  document.getElementById('nav').classList.toggle('scrolled', window.scrollY > 40);
+});
+</script>
+<script src="../search.js"></script>
+
+</body>
+</html>

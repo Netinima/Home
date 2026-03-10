@@ -107,6 +107,25 @@ const SHOW_REGISTRY = [
      featured: false,
    },
 
+   {
+     id:       'backintime',
+     file:     'shows/backintime.html',
+     title:    'Back In Time',
+     year:     '2014',
+     type:     'Film',
+     seasons:  'Film',
+     episodes: '1 Film',
+     runtime:  '02:21',
+     views:    '2.6M views',
+     stars:    '★★★★★',
+     rating:   '9.0',
+     badge:    'NEW',
+     genres:   ['Adventure'],
+     thumbYt:  'IiM3Bw6p-NU',
+     heroDesc: 'Someone else tell me',
+     featured: false,
+   },
+
   // ── ADD YOUR NEXT SHOW BELOW THIS LINE ──
   // {
   //   id:       'your-show-id',
