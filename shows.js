@@ -82,7 +82,7 @@ const SHOW_REGISTRY = [
      stars:    '★★★★★',
      rating:   '9.0',
      badge:    'NEW',
-     genres:   ['Adventure', 'Action', 'SMP'],
+     genres:   ['Adventure','Action','SMP'],
      thumbYt:  'IsKOKpHXz8E',
      heroDesc: 'A scripted SMP about taking an empire down.',
      featured: false,
