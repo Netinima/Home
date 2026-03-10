@@ -69,6 +69,25 @@ const SHOW_REGISTRY = [
     featured: true,
   },
 
+  {
+     id:       'echo-smp',
+     file:     'shows/echo-smp.html',
+     title:    'Echo SMP',
+     year:     '2025-6',
+     type:     'Series',
+     seasons:  '1 Season',
+     episodes: '5 Episodes',
+     runtime:  '37 min avg',
+     views:    'okay views',
+     stars:    '★★★★★',
+     rating:   '9.0',
+     badge:    'NEW',
+     genres:   ['Adventure', 'Action', 'SMP'],
+     thumbYt:  'IsKOKpHXz8E',
+     heroDesc: 'A scripted SMP about taking an empire down.',
+     featured: false,
+   },
+
   // ── ADD YOUR NEXT SHOW BELOW THIS LINE ──
   // {
   //   id:       'your-show-id',
