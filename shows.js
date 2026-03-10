@@ -126,6 +126,25 @@ const SHOW_REGISTRY = [
      featured: false,
    },
 
+   {
+     id:       'midget-giant',
+     file:     'shows/TheSheepBroadcast/midget-giant.html',
+     title:    'Midgets and Giants',
+     year:     '2015',
+     type:     'Film',
+     seasons:  'Film',
+     episodes: '1 Film',
+     runtime:  '09:24',
+     views:    '30K views',
+     stars:    '★★★★★',
+     rating:   '9.0',
+     badge:    'NEW',
+     genres:   ['Fantasy'],
+     thumbYt:  'UUv9GkEJpZI',
+     heroDesc: 'Someone else tell me',
+     featured: false,
+   },
+
   // ── ADD YOUR NEXT SHOW BELOW THIS LINE ──
   // {
   //   id:       'your-show-id',
