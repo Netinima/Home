@@ -128,7 +128,7 @@ const SHOW_REGISTRY = [
 
    {
      id:       'midget-giant',
-     file:     'shows/TheSheepBroadcast/midget-giant.html',
+     file:     'shows/midget-giant.html',
      title:    'Midgets and Giants',
      year:     '2015',
      type:     'Film',
